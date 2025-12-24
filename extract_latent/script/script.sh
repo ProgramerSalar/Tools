@@ -1,12 +1,12 @@
 GPUS=1
-ANNO_FILE=../../videoGen_fineTune/annotation/test_video_annotation.jsonl
+ANNO_FILE=/content/VideoGen_FineTune/annotation/test_video_annotation.jsonl
 VAE_MODEL_PATH=PATH/vae_ckpt
 WIDTH=640
 HEIGHT=384
 NUM_FRAMES=121
 
 torchrun --nproc_per_node $GPUS \
-    ../../vae_from_scratch/extract_latent/extract_video_latent.py \
+    /content/VideoGen_FineTune/extract_latent/extract_video_latent.py \
     --model_dtype bf16 \
     --batch_size 1 \
     --anno_file $ANNO_FILE \

@@ -6,7 +6,7 @@ import sys
 from args import get_args
 
 from vae import CausalVideoVAELossWrapper
-from Dataset.dataset_cls import VideoDataset
+from Dataset.video_dataset import VideoDataset
 
 
 def build_model(args):

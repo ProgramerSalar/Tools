@@ -1,0 +1,1 @@
+sh extract_latent/script/script.sh
