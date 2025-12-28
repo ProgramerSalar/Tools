@@ -5,13 +5,13 @@
 
 GPUS=1  # The gpu number
 MODEL_NAME=pyramid_flux     # The model name, `pyramid_flux` or `pyramid_mmdit`
-MODEL_PATH=/content/text_encoder_miniflux # The VAE CKPT dir.
+MODEL_PATH=/content/extract_text_features/PATH/text_encoder_miniflux # The VAE CKPT dir.
 # ANNO_FILE=annotation/video_text.jsonl   # The video annotation file path
-ANNO_FILE=/content/VideoGen_FineTune/annotation/video_data_files_path.jsonl
+ANNO_FILE=/content/Tools/annotation/output.jsonl
 
 
 torchrun --nproc_per_node=$GPUS \
-    /content/VideoGen_FineTune/extract_text_features/extract_text_feature.py \
+    /content/Tools/extract_text_features/extract_text_feature.py \
     --batch_size 1 \
     --model_dtype bf16 \
     --model_name $MODEL_NAME \
