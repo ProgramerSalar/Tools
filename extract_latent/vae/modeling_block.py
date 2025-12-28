@@ -456,4 +456,3 @@ class UpDecoderBlockCausal3D(nn.Module):
                 hidden_states = temporal_upsampler(hidden_states, is_init_image=is_init_image, temporal_chunk=temporal_chunk)
 
         return hidden_states
-

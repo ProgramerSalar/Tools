@@ -223,6 +223,21 @@ class CausalVideoVAE(ModelMixin, ConfigMixin):
 
     # <------------------ This phase to when you test your video to your train model weight how is that ----------------------------------->
 
+    def enable_tiling(self, use_tiling: bool = True):
+        r"""
+        Enable tiled VAE decoding. When this option is enabled, the VAE will split the input tensor into tiles to
+        compute decoding and encoding in several steps. This is useful for saving a large amount of memory and to allow
+        processing larger images.
+        """
+        self.use_tiling = use_tiling
+
+    def disable_tiling(self):
+        r"""
+        Disable tiled VAE decoding. If `enable_tiling` was previously enabled, this method will go back to computing
+        decoding in one step.
+        """
+        self.enable_tiling(False)
+
 
     def encode(
         self, 
@@ -473,6 +488,3 @@ class CausalVideoVAE(ModelMixin, ConfigMixin):
 
 
         
-
-
-

@@ -12,7 +12,7 @@
 
 2. clone this repo: 
     ```
-    git clone https://github.com/ProgramerSalar/VideoGen_FineTune.git
+    git clone https://github.com/ProgramerSalar/Tools.git
     ```
 
 3. Download the Dataset
