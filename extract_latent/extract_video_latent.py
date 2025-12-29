@@ -1,7 +1,7 @@
 import torch 
 from torch.utils.data import DataLoader
 from concurrent import futures
-import sys, os
+import sys 
 sys.path.append("/content/VideoGen_FineTune")
 
 
@@ -84,13 +84,6 @@ def main(args):
 
             with torch.no_grad(), torch.amp.autocast(device_type='cuda', enabled=True, dtype=torch_dtype):
                 for video_input, output_path in zip(input_video_list, output_path_list):
-
-                    # --- NEW LOGIC STARTS HERE ---
-                    # Check if the file already exists. If yes, skip it.
-                    if os.path.exists(output_path):
-                        print(f"File already exists, skipping: {output_path}")
-                        continue
-                    # --- NEW LOGIC ENDS HERE ---
                     
                     # Move to device JUST before use to save memory
                     video_input = video_input.to(device)

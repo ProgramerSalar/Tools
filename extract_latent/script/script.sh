@@ -1,5 +1,5 @@
 GPUS=1
-ANNO_FILE=/content/Tools/annotation/video_text_json.json
+ANNO_FILE=/content/Tools/annotation/output.jsonl
 VAE_MODEL_PATH=/content/Tools/extract_latent/PATH/vae_model_ckpt
 WIDTH=640
 HEIGHT=384
