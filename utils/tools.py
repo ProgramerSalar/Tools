@@ -167,9 +167,9 @@ def convert_into_jsonl(json_file_path):
 
 
 if __name__ == "__main__":
-    video_folder_path = "./Data/clip_video"
-    video_text_json_path = "./annotation/annotation_with_text/video_text_json.json"
-    main(video_folder_path, video_text_json_path)
+    # video_folder_path = "./Data/clip_video"
+    # video_text_json_path = "./annotation/annotation_with_text/video_text_json.json"
+    # main(video_folder_path, video_text_json_path)
 
-    # convert_into_jsonl("/home/manish/Desktop/projects/video_Generation/Tools/annotation/annotation_with_text/video_text_json.json")
+    convert_into_jsonl("/home/manish/Desktop/projects/video_Generation/Tools/annotation/annotation_with_text/video_text_json.json")
     
