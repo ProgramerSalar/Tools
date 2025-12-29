@@ -60,11 +60,7 @@ class VideoTextDataset(Dataset):
             text = anno['text']
             text_fea_path = anno['text_latent']    # The text feature save path
 
-            print(f"text: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> {text}")
-            print(f"[Dataset] text_feature_path: >>>>>>>>>>>>>>>>>>>>>> {text_fea_path}")
-            
-            
-           
+       
             text_fea_save_dir = os.path.split(text_fea_path)[0]
             if not os.path.exists(text_fea_save_dir):
                 os.makedirs(text_fea_save_dir, exist_ok=True)
