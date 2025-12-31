@@ -2,7 +2,7 @@ import torch
 from torch.utils.data import DataLoader
 from concurrent import futures
 import sys 
-sys.path.append("/content/VideoGen_FineTune")
+# sys.path.append("/content/VideoGen_FineTune")
 
 
 from args import get_args
