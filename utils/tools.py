@@ -2,7 +2,7 @@ import jsonlines
 import json, os, glob 
 from pathlib import Path
 import pandas as pd 
-
+import hashlib
 
 
     
@@ -94,6 +94,12 @@ def csv_file_take(metadata_file_path):
 
             video_latent_file = video_file.replace('.mp4', '.pt')
             text_latent_file = video_text.replace(' ', '_')
+            text_latent_file = text_latent_file[:100]
+            hash_object = hashlib.md5(text_latent_file.encode('utf-8'))
+            safe_filename = hash_object.hexdigest()
+            text_latent_file = text_latent_file+'_'+safe_filename
+            # print(text_latent_file)
+
             text_latent_file = text_latent_file.split('.')[0]
             text_latent_file = text_latent_file.__add__('.pt')
             # print(text_latent_file)
@@ -135,6 +141,7 @@ def main(video_folder_path, video_text_json_path):
     os.makedirs(os.path.dirname(video_text_json_path), exist_ok=True)
 
     for roots, dirs, files in os.walk(video_folder_path):
+        print(roots)
         for file in files:
             if file.lower().endswith('.csv'):
                 new_path = Path(roots) / file
@@ -146,30 +153,33 @@ def main(video_folder_path, video_text_json_path):
 
     # Save everything ONCE at the end
     with open(video_text_json_path, 'w', encoding='utf-8') as f:
-        json.dump(all_video_data, f, indent=2)
+        # json.dump(all_video_data, f, indent=2)
+        for item in all_video_data:
+            json.dump(item, f)
+            f.write("\n")
         print(f"Successfully saved {len(all_video_data)} entries to {video_text_json_path}")
 
 
-def convert_into_jsonl(json_file_path):
+# def convert_into_jsonl(json_file_path):
 
 
 
-    # Assuming your JSON is an array of objects
-    with open(json_file_path, 'r') as f_in:
-        data = json.load(f_in) # Loads the entire JSON array
+#     # Assuming your JSON is an array of objects
+#     with open(json_file_path, 'r') as f_in:
+#         data = json.load(f_in) # Loads the entire JSON array
 
-    with open('./output.jsonl', 'w') as f_out:
-        for item in data:
-            # Dumps each item as a JSON string and writes it followed by a newline
-            json.dump(item, f_out)
-            f_out.write('\n') # Add the newline character
+#     with open('./output.jsonl', 'w') as f_out:
+#         for item in data:
+#             # Dumps each item as a JSON string and writes it followed by a newline
+#             json.dump(item, f_out)
+#             f_out.write('\n') # Add the newline character
 
 
 
 if __name__ == "__main__":
-    # video_folder_path = "./Data/clip_video"
-    # video_text_json_path = "./annotation/annotation_with_text/video_text_json.json"
-    # main(video_folder_path, video_text_json_path)
+    video_folder_path = "/content"
+    video_text_json_path = "./annotation/class_5_video.jsonl"
+    main(video_folder_path, video_text_json_path)
 
-    convert_into_jsonl("/home/manish/Desktop/projects/video_Generation/Tools/annotation/annotation_with_text/video_text_json.json")
+    # convert_into_jsonl("/home/manish/Desktop/projects/video_Generation/Tools/annotation/annotation_with_text/video_text_json.json")
     
