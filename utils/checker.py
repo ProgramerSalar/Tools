@@ -47,16 +47,17 @@ if __name__ == "__main__":
     from pathlib import Path
 # /home/manish/Desktop/projects/video_generation_from_scratch/clip_video/Algebra Basics： Graphing On The Coordinate Plane - Math Antics [9Uc62CuQjc4]/videos/clip_0000.mp4.pt
     # path = "/home/manish/Desktop/projects/video_generation_from_scratch/clip_video"
-    path = "/home/manish/Desktop/projects/video_Generation/Tools/extract_video_latent_data/clip_video"
-    # path = "/home/manish/Desktop/projects/video_Generation/Tools/clip_0000.pt"
-    for root, dirs, files in  os.walk(path):
-        # path_check = glob.glob()
-        for file in files:
-            pt_file = Path(root+'/'+file)
-            if pt_file.suffix.lower() == ".pt":
-                checker(pt_file)
+    # path = "/home/manish/Desktop/projects/video_Generation/Tools/extract_video_latent_data/clip_video"
+    # for root, dirs, files in  os.walk(path):
+    #     # path_check = glob.glob()
+    #     for file in files:
+    #         pt_file = Path(root+'/'+file)
+    #         if pt_file.suffix.lower() == ".pt":
+    #             checker(pt_file)
 
-    # checker(path)
+    path = "/home/manish/Desktop/projects/video_Generation/Tools/video_vae_ckpt/Class 5  Maths  Decimal Fractions - Pebbles Online Education (1080p, h264)_3739.pt"
+
+    checker(path)
 
             
             

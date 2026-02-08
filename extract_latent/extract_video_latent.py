@@ -61,6 +61,9 @@ def main(args):
 
     device = torch.device('cuda')
     model = build_model(args).to(device)
+
+    
+    
     
     if args.model_dtype == "bf16":
         torch_dtype = torch.bfloat16
@@ -88,10 +91,14 @@ def main(args):
                     # Move to device JUST before use to save memory
                     video_input = video_input.to(device)
 
+                    scale_factor = model.vae.config.scaling_factor
+                    # scale_factor = 0.18215 
+
                     # You might need to check if your model supports a 'tile_sample_min_size'
                     # or explicitly modify 'vae/modeling_causal_vae.py' to set temporal_chunk=True
                     video_latent = model.encode_latent(video_input, sample=True, temporal_chunk=True, window_size=8, tile_sample_min_size=256)
-                    
+                    video_latent = video_latent * scale_factor
+
                     # Submit task and IMMEDIATELY delete reference to free VRAM
                     task_queue.append(Excecuter.submit(save_tensor, video_latent.cpu(), output_path))
                     del video_input
